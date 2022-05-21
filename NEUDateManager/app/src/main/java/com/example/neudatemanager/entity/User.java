@@ -33,6 +33,7 @@ public class User {
         this.name = name;
     }
 
+    //向数据库中写入User对象的属性
     public long write(String nullColumnHack, Context context){
         DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"user.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
@@ -42,6 +43,7 @@ public class User {
         return db.insert("user",nullColumnHack,contentValues);
     }
 
+    //返回name的行数
     public int countOfName(String name,String nullColumnHack, Context context){
         DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"user.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
@@ -52,6 +54,7 @@ public class User {
 
     }
 
+    //登陆函数
     public  boolean login(String name,String password,String nullColumnHack, Context context){
         DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"user.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
@@ -66,6 +69,7 @@ public class User {
         return false;
     }
 
+    //清空数据库用
     public void emptyDB(String nullColumnHack, Context context){
         DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"user.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();

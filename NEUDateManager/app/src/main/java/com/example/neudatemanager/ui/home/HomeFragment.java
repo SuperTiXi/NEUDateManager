@@ -1,6 +1,8 @@
 package com.example.neudatemanager.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -38,13 +40,16 @@ public class HomeFragment extends Fragment {
         final ListView listView = binding.ListViewScheduleOfToday;
         final FloatingActionButton button = binding.ButtonAddSchedule;
         final CalendarView calendarView = binding.calendarView;
-        
 
+        //获取参数
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(null, Context.MODE_PRIVATE);
+        String creator = sharedPreferences.getString("name",null);
 
+        //点击日历时切换，今日日程
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                Schedule schedule = new Schedule();
+                Schedule schedule = new Schedule(creator);
                 Date date = new Date(year,month,day);
                 Cursor cursor = schedule.getCursorByDay(null,getActivity(),schedule.formatDate(date));
                 int[] to = {R.id.textView_nameGet,R.id.textView_startTimeGet,R.id.textView_endTimeGet};
@@ -54,6 +59,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        //创建日程按钮
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

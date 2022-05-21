@@ -15,6 +15,11 @@ public class Schedule {
     private String name;
     private String startTime;
     private String endTime;
+
+    public Schedule(String creator) {
+        this.creator = creator;
+    }
+
     private String creator;
     private String day;
 
@@ -69,6 +74,8 @@ public class Schedule {
         this.creator =creator;
     }
 
+
+    //写入Schedule信息
     public long write(String nullColumnHack,Context context){
         DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
@@ -80,6 +87,7 @@ public class Schedule {
         return db.insert("schedule",nullColumnHack,contentValues);
     }
 
+    //返回该日期下的数据库的指针
     public Cursor getCursorByDay(String nullColumnHack,Context context,String day){
         DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
@@ -87,6 +95,7 @@ public class Schedule {
         return cursor;
     }
 
+    //格式化时间
     public String formatDate(Date date){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-DD HH:mm");
         String formatDate  = simpleDateFormat.format(date);

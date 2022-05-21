@@ -4,4 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddScheduleActivity"/>
+    tools:context=".AddScheduleActivity">
+
+    <TextView
+        android:id="@+id/textView_NewSchedule"
+        android:layout_width="147dp"
+        android:layout_height="53dp"
+        android:text="创建日程"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_SetName"
+        android:layout_width="416dp"
+        android:layout_height="54dp"
+        android:ems="10"
+        android:hint="请输入事件标题"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="70dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
