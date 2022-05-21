@@ -50,7 +50,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
                 Schedule schedule = new Schedule(creator);
-                Date date = new Date(year,month,day);
+                Date date = new Date(year,month+1,day);
                 Cursor cursor = schedule.getCursorByDay(null,getActivity(),schedule.formatDate(date));
                 int[] to = {R.id.textView_nameGet,R.id.textView_startTimeGet,R.id.textView_endTimeGet};
                 SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(getActivity(),R.layout.list,cursor,new String[]{"name","startTime","endTime"},to);

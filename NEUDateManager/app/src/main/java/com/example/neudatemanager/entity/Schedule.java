@@ -15,14 +15,13 @@ public class Schedule {
     private String name;
     private String startTime;
     private String endTime;
+    private String creator;
+    private String day;
+
 
     public Schedule(String creator) {
         this.creator = creator;
     }
-
-    private String creator;
-    private String day;
-
     public String getDay() {
         return day;
     }
@@ -95,10 +94,25 @@ public class Schedule {
         return cursor;
     }
 
-    //格式化时间
+    //格式化日期
     public String formatDate(Date date){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-DD HH:mm");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-DD");
         String formatDate  = simpleDateFormat.format(date);
         return formatDate;
+    }
+
+    //格式化时间
+    public String formatTime(Date date){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+        String formatDate  = simpleDateFormat.format(date);
+        return formatDate;
+    }
+    //获取指针
+    public Cursor getCursor(String nullColumnHack,Context context){
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db",null,1);
+        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+        Cursor cursor = db.query("schedule",new String[]{"name","startTime","endTime","creator","day"},"name = ?",new String[]{this.creator},null,null,null);
+
+        return cursor;
     }
 }

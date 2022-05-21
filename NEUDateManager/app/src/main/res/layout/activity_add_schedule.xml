@@ -15,15 +15,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editText_SetName"
-        android:layout_width="416dp"
-        android:layout_height="54dp"
-        android:ems="10"
-        android:hint="请输入事件标题"
-        android:inputType="textPersonName"
+    <ListView
+        android:id="@+id/ListView_AddSchedule"
+        android:layout_width="409dp"
+        android:layout_height="676dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="70dp" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_NewSchedule" />
+
+    <ImageView
+        android:id="@+id/imageView_Commit"
+        android:layout_width="61dp"
+        android:layout_height="53dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_check_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
