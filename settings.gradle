@@ -14,4 +14,3 @@ dependencyResolutionManagement {
 }
 rootProject.name = "NEUDateManager"
 include ':app'
-include ':calendarview'
