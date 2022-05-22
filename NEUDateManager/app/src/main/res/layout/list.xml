@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView_name"
+        android:layout_width="118dp"
+        android:layout_height="41dp"
+        android:text="日程标题："
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toStartOf="@+id/textView_nameGet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_nameGet"
+        android:layout_width="283dp"
+        android:layout_height="41dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView_name"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_startTime"
+        android:layout_width="103dp"
+        android:layout_height="40dp"
+        android:text="开始时间："
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toStartOf="@+id/textView_startTimeGet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_name" />
+
+    <TextView
+        android:id="@+id/textView_startTimeGet"
+        android:layout_width="295dp"
+        android:layout_height="40dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView_startTime"
+        app:layout_constraintTop_toBottomOf="@+id/textView_name" />
+
+    <TextView
+        android:id="@+id/textView_endTime"
+        android:layout_width="103dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:text="结束时间:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_startTime" />
+
+    <TextView
+        android:id="@+id/textView_endTimeGet"
+        android:layout_width="295dp"
+        android:layout_height="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView_endTime"
+        app:layout_constraintTop_toBottomOf="@+id/textView_startTimeGet" />
+</androidx.constraintlayout.widget.ConstraintLayout>
