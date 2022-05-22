@@ -69,6 +69,16 @@ public class User {
         return false;
     }
 
+    //修改密码
+    public int modifyPassword(String nullColumnHack, Context context){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("password",this.password);
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"user.db",null,1);
+        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+        int modifyCount = db.update("user",contentValues,"user = ?",new String[]{this.name});
+        return modifyCount;
+    }
+
     //清空数据库用
     public void emptyDB(String nullColumnHack, Context context){
         DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"user.db",null,1);
