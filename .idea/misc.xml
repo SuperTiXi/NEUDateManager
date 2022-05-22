@@ -7,18 +7,22 @@
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.124" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.124" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.124" />
+        <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/drawable/ic_curriculum_black_24dp.xml" value="0.124" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.124" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.124" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/drawable/ic_launcher_background.xml" value="0.124" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/drawable/ic_main_black_24dp.xml" value="0.124" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/drawable/ic_mine.xml" value="0.124" />
+        <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/drawable/ic_mine_black_24dp.xml" value="0.1" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.124" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/layout/activity_add_schedule.xml" value="0.24365942028985507" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/layout/activity_login.xml" value="0.20380434782608695" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/layout/activity_main.xml" value="0.20380434782608695" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/layout/activity_test.xml" value="0.24365942028985507" />
+        <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/layout/fragment_curriculum.xml" value="0.20833333333333334" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/layout/fragment_mine.xml" value="0.24947916666666667" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/layout/fragment_notifications.xml" value="0.20833333333333334" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/layout/list.xml" value="0.24365942028985507" />
         <entry key="..\:/AndroidStudio-workspace/NEUDateManager/app/src/main/res/layout/list_add_schedule.xml" value="0.1837431693989071" />

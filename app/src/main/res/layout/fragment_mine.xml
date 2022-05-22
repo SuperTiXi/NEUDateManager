@@ -4,4 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.mine.MineFragment"/>
+    tools:context=".ui.mine.MineFragment">
+
+    <TextView
+        android:id="@+id/textView_Welcome"
+        android:layout_width="128dp"
+        android:layout_height="37dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
