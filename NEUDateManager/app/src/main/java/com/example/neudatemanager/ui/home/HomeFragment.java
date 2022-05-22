@@ -43,15 +43,16 @@ public class HomeFragment extends Fragment {
 
         //获取参数
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(null, Context.MODE_PRIVATE);
-        String creator = sharedPreferences.getString("name",null);
+        String creator = sharedPreferences.getString("creator",null);
 
         //点击日历时切换，今日日程
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
                 Schedule schedule = new Schedule(creator);
-                Date date = new Date(year,month+1,day);
-                Cursor cursor = schedule.getCursorByDay(null,getActivity(),schedule.formatDate(date));
+                Date date = new Date(year-1900,month,day);
+                String formatDate = schedule.formatDate(date);
+                Cursor cursor = schedule.getCursorByDay(null,getActivity(),formatDate);
                 int[] to = {R.id.textView_nameGet,R.id.textView_startTimeGet,R.id.textView_endTimeGet};
                 SimpleCursorAdapter simpleCursorAdapter = new SimpleCursorAdapter(getActivity(),R.layout.list,cursor,new String[]{"name","startTime","endTime"},to);
                 listView.setAdapter(simpleCursorAdapter);

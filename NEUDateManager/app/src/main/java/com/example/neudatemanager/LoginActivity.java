@@ -33,9 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         //传参用
         SharedPreferences sharedPreferences = getSharedPreferences(null,MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("name",name.getText().toString());
-        editor.commit();
-
+        editor.clear();
 
         //登录按钮的点击事件
         login.setOnClickListener(new View.OnClickListener() {
@@ -56,6 +54,8 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this,"注册失败",Toast.LENGTH_LONG).show();
                     }else{
                         Toast.makeText(LoginActivity.this,"注册成功",Toast.LENGTH_LONG).show();
+                        editor.putString("creator",nameGet);
+                        editor.commit();
                         startActivity(intent);
                     }
                 }
@@ -63,6 +63,8 @@ public class LoginActivity extends AppCompatActivity {
                 else if(count==1){
                         if(user.login(nameGet,passwordGet,null,LoginActivity.this)){
                             Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_LONG).show();
+                            editor.putString("creator",nameGet);
+                            editor.commit();
                             startActivity(intent);
                         }
                         else {

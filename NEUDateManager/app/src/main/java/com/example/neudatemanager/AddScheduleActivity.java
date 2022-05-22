@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.neudatemanager.entity.Schedule;
 
@@ -36,10 +38,11 @@ public class AddScheduleActivity extends AppCompatActivity {
         //寻找组件
         imageView =findViewById(R.id.imageView_Commit);
         listView = findViewById(R.id.ListView_AddSchedule);
+        imageView = findViewById(R.id.imageView_Commit);
 
         //获取creator
         SharedPreferences sharedPreferences = getSharedPreferences(null,MODE_PRIVATE);
-        String creator = sharedPreferences.getString("name",null);
+        String creator = sharedPreferences.getString("creator",null);
 
         Schedule schedule = new Schedule(creator);
 
@@ -71,6 +74,7 @@ public class AddScheduleActivity extends AppCompatActivity {
                                 setListView(schedule);
                             }
                         });
+                        builder.show();
                         break;
                     case 1://设置日期
                         Calendar calendar = Calendar.getInstance();
@@ -119,6 +123,21 @@ public class AddScheduleActivity extends AppCompatActivity {
             }
         });
 
+        //提交按钮
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                long isSuccess = schedule.write(null,AddScheduleActivity.this);
+                if(isSuccess == -1){
+                    Toast.makeText(AddScheduleActivity.this,"创建失败",Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(AddScheduleActivity.this,"创建成功",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(AddScheduleActivity.this,MainActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     //list设置函数

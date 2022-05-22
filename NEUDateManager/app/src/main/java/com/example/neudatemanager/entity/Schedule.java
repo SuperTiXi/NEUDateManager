@@ -96,7 +96,7 @@ public class Schedule {
 
     //格式化日期
     public String formatDate(Date date){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-DD");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String formatDate  = simpleDateFormat.format(date);
         return formatDate;
     }

@@ -7,27 +7,28 @@
 
     <TextView
         android:id="@+id/textView_Head"
-        android:layout_width="203dp"
-        android:layout_height="98dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="106dp"
+        android:layout_height="42dp"
         android:gravity="left"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_Body"
-        android:layout_width="672dp"
-        android:layout_height="98dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_width="265dp"
+        android:layout_height="42dp"
         android:gravity="right"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toEndOf="@+id/textView_Head"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="94dp"
-        android:layout_height="98dp"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/textView_Body"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />

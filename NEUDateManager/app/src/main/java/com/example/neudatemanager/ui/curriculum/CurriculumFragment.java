@@ -10,18 +10,19 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.neudatemanager.databinding.FragmentDashboardBinding;
+import com.example.neudatemanager.databinding.FragmentCurriculumBinding;
+
 
 public class CurriculumFragment extends Fragment {
 
-    private FragmentDashboardBinding binding;
+    private FragmentCurriculumBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentCurriculumBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
+
 
         return root;
     }
