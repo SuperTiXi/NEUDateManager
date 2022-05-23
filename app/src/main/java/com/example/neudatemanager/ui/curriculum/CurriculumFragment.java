@@ -1,5 +1,8 @@
 package com.example.neudatemanager.ui.curriculum;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.http.SslError;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,13 +15,12 @@ import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
+import com.example.neudatemanager.CurriculumActivity;
 import com.example.neudatemanager.databinding.FragmentCurriculumBinding;
 import com.example.neudatemanager.entity.SimpleNEUClass;
 
@@ -155,11 +157,13 @@ public class CurriculumFragment extends Fragment {
                                         Toast.LENGTH_LONG
                                 ).show();
 
-
-
-
-
-
+                                //找到今天的日期，进而确定现在是第几周 用一个表格把本周的课表表示出来
+                                SharedPreferences userInfo = getActivity().getSharedPreferences("msg_settings", Context.MODE_PRIVATE);
+                                SharedPreferences.Editor editor = userInfo.edit();
+                                editor.putString("course", JSON.toJSONString(classArray));
+                                Log.e("s",JSON.toJSONString(classArray));
+                                editor.commit();
+                                startActivity(new Intent(getActivity(), CurriculumActivity.class));
 
 
                                 //请在上面写你的逻辑，我是底线
