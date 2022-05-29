@@ -91,23 +91,31 @@ public class Schedule {
 
     //写入Schedule信息
     public long write(String nullColumnHack,Context context){
-        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db",null,1);
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule1.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+        String i;
+        if(this.isNotification==true){
+            i = "1";
+        }
+        else{
+            i = "0";
+        }
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name",this.getName());
         contentValues.put("startTime",this.getStartTime());
         contentValues.put("endTime",this.getEndTime());
-        contentValues.put("creator",this.getCreator());
         contentValues.put("day",this.getDay());
-        contentValues.put("notification",this.isNotification());
-        return db.insert("schedule",nullColumnHack,contentValues);
+        contentValues.put("name",this.getName());
+        contentValues.put("notification",i);
+        contentValues.put("creator",this.getCreator());
+
+        return db.insert("schedule1",nullColumnHack,contentValues);
     }
 
     //返回该日期下的数据库的指针
     public Cursor getCursorByDay(String nullColumnHack,Context context,String day){
-        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db",null,1);
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule1.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
-        Cursor cursor = db.query("schedule",new String[]{"name as _id","startTime","endTime"},"day = ? and creator = ?",new String[]{day,this.creator},null,null,null);
+        Cursor cursor = db.query("schedule1",new String[]{"name as _id","startTime","endTime"},"day = ? and creator = ?",new String[]{day,this.creator},null,null,null);
         return cursor;
     }
 
@@ -128,24 +136,31 @@ public class Schedule {
 
     //修改日程
     public long modify(String nullColumnHack,Context context,Schedule schedule){
-        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db",null,1);
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule1.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+        int i;
+        if(this.isNotification==true){
+            i= 1;
+        }
+        else{
+            i = 0;
+        }
         ContentValues contentValues = new ContentValues();
         contentValues.put("name",schedule.getName());
         contentValues.put("startTime",schedule.getStartTime());
         contentValues.put("endTime",schedule.getEndTime());
         contentValues.put("creator",schedule.getCreator());
         contentValues.put("day",schedule.getDay());
-        contentValues.put("notification",schedule.isNotification());
+        contentValues.put("notification",i);
 
-        return db.update("schedule",contentValues,"name = ? and startTime = ? and endTime = ? and creator = ? and day = ?",new String[]{this.name,this.startTime,this.endTime,this.creator,this.day});
+        return db.update("schedule1",contentValues,"name = ? and startTime = ? and endTime = ? and creator = ? and day = ? ",new String[]{this.name,this.startTime,this.endTime,this.creator,this.day});
     }
 
     //删除日程
     public long delete(String nullColumnHack,Context context){
-        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db",null,1);
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule1.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
-        return db.delete("schedule","name = ? and startTime = ? and endTime = ? and creator = ? and day = ?",new String[]{this.name,this.startTime,this.endTime,this.creator,this.day});
+        return db.delete("schedule1","name = ? and startTime = ? and endTime = ? and creator = ? and day = ?",new String[]{this.name,this.startTime,this.endTime,this.creator,this.day});
     }
 
     //获取需要提醒的日程
@@ -154,9 +169,9 @@ public class Schedule {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String today = simpleDateFormat.format(curDate);
         List<Schedule> scheduleList = new ArrayList<>();
-        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db",null,1);
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db1",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
-        Cursor cursor = db.query("schedule",new String[]{"name","startTime","endTime","creator","day","notification"},"day = ? and notification = ?",new String[]{today,"1"},null,null,null);
+        Cursor cursor = db.query("schedule1",new String[]{"name","startTime","endTime","creator","day","notification"},"day = ? and notification = ?",new String[]{today,"1"},null,null,null);
         while(cursor.moveToNext()){
             Schedule schedule = new Schedule(cursor.getString(0)
             ,cursor.getString(1)
@@ -180,8 +195,8 @@ public class Schedule {
 
     //清空数据库用
     public void emptyDB(String nullColumnHack, Context context){
-        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db",null,1);
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule1.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
-        db.delete("schedule",null,null);
+        db.delete("schedule1",null,null);
     }
 }

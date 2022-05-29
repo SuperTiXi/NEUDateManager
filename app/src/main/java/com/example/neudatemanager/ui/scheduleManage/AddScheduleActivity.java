@@ -8,6 +8,7 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.neudatemanager.R;
 import com.example.neudatemanager.entity.Schedule;
+import com.example.neudatemanager.sqlite.DBOpenHelper;
 import com.example.neudatemanager.ui.activity.MainActivity;
 
 import java.util.ArrayList;
@@ -147,7 +149,7 @@ public class AddScheduleActivity extends AppCompatActivity {
                     Toast.makeText(AddScheduleActivity.this,"创建失败",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    if(schedule.getName().equals("")||schedule.getStartTime().equals("")||schedule.getEndTime().equals("")){
+                    if(schedule.getName()==null||schedule.getStartTime()==null||schedule.getEndTime()==null){
                         Toast.makeText(AddScheduleActivity.this,"不能为空",Toast.LENGTH_LONG).show();
                     }
                     else {
@@ -193,4 +195,6 @@ public class AddScheduleActivity extends AppCompatActivity {
         SimpleAdapter simpleAdapter = new SimpleAdapter(this,list,R.layout.list_add_schedule,from,to);
         listView.setAdapter(simpleAdapter);
     }
+
+
 }
