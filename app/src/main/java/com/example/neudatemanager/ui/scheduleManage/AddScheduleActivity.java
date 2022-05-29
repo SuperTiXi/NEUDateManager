@@ -1,4 +1,4 @@
-package com.example.neudatemanager;
+package com.example.neudatemanager.ui.scheduleManage;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +19,7 @@ import android.widget.SimpleAdapter;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.neudatemanager.R;
 import com.example.neudatemanager.entity.Schedule;
 import com.example.neudatemanager.ui.activity.MainActivity;
 

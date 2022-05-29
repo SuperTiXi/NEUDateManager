@@ -19,9 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 
-import com.example.neudatemanager.AddScheduleActivity;
+import com.example.neudatemanager.ui.scheduleManage.AddScheduleActivity;
 import com.example.neudatemanager.R;
-import com.example.neudatemanager.databinding.FragmentHomeBinding;
 import com.example.neudatemanager.entity.Schedule;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
