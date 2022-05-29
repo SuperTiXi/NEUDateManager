@@ -20,7 +20,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.neudatemanager.CurriculumActivity;
 import com.example.neudatemanager.databinding.FragmentCurriculumBinding;
 import com.example.neudatemanager.entity.SimpleNEUClass;
 

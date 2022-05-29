@@ -1,4 +1,4 @@
-package com.example.neudatemanager;
+package com.example.neudatemanager.ui.curriculum;
 
 public class TimeTableModel {
 	private int id;

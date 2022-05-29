@@ -1,4 +1,4 @@
-package com.example.neudatemanager;
+package com.example.neudatemanager.ui.curriculum;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import com.example.neudatemanager.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

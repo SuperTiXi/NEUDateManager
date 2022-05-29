@@ -11,12 +11,12 @@
         android:fillViewport="false"
         >
 
-        <com.example.neudatemanager.TimeTableView
+        <com.example.neudatemanager.ui.curriculum.TimeTableView
             android:id="@+id/main_timetable_ly"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical" >
-        </com.example.neudatemanager.TimeTableView>
+        </com.example.neudatemanager.ui.curriculum.TimeTableView>
     </ScrollView>
 
 </LinearLayout>

@@ -1,14 +1,14 @@
-package com.example.neudatemanager;
+package com.example.neudatemanager.ui.curriculum;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ScrollView;
 
 import com.alibaba.fastjson.JSON;
+import com.example.neudatemanager.R;
 import com.example.neudatemanager.entity.SimpleNEUClass;
 
 import java.text.ParseException;

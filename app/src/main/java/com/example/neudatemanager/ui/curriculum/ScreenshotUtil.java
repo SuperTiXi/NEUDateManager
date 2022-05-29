@@ -1,4 +1,4 @@
-package com.example.neudatemanager;
+package com.example.neudatemanager.ui.curriculum;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,6 +8,8 @@ import android.graphics.Color;
 import android.os.Environment;
 import android.widget.ScrollView;
 import android.widget.Toast;
+
+import com.example.neudatemanager.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;

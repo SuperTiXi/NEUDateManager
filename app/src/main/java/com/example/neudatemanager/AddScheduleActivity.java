@@ -20,6 +20,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.neudatemanager.entity.Schedule;
+import com.example.neudatemanager.ui.activity.MainActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -133,7 +134,7 @@ public class AddScheduleActivity extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(AddScheduleActivity.this,"创建成功",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(AddScheduleActivity.this,MainActivity.class);
+                    Intent intent = new Intent(AddScheduleActivity.this, MainActivity.class);
                     startActivity(intent);
                 }
                 //清空数据库用

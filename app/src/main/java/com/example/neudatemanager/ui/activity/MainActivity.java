@@ -1,7 +1,8 @@
-package com.example.neudatemanager;
+package com.example.neudatemanager.ui.activity;
 
 import android.os.Bundle;
 
+import com.example.neudatemanager.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
