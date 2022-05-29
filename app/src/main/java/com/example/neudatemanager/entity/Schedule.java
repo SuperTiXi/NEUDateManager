@@ -117,6 +117,26 @@ public class Schedule {
         return cursor;
     }
 
+    //修改日程
+    public long modify(String nullColumnHack,Context context,Schedule schedule){
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db",null,1);
+        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name",schedule.getName());
+        contentValues.put("startTime",schedule.getStartTime());
+        contentValues.put("endTime",schedule.getEndTime());
+        contentValues.put("creator",schedule.getCreator());
+        contentValues.put("day",schedule.getDay());
+
+        return db.update("schedule",contentValues,"name = ? and startTime = ? and endTime = ? and creator = ? and day = ?",new String[]{this.name,this.startTime,this.endTime,this.creator,this.day});
+    }
+
+    //删除日程
+    public long delete(String nullColumnHack,Context context){
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db",null,1);
+        SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
+        return db.delete("schedule","name = ? and startTime = ? and endTime = ? and creator = ? and day = ?",new String[]{this.name,this.startTime,this.endTime,this.creator,this.day});
+    }
     //清空数据库用
     public void emptyDB(String nullColumnHack, Context context){
         DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db",null,1);

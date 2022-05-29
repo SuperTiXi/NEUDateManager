@@ -18,6 +18,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 
+import com.example.neudatemanager.databinding.FragmentMineBinding;
 import com.example.neudatemanager.entity.User;
 
 
