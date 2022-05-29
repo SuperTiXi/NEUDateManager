@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NEUDateManager">
         <activity
+            android:name=".notification.NotificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.scheduleManage.ModifyScheduleActivity"
             android:exported="false" />
         <activity

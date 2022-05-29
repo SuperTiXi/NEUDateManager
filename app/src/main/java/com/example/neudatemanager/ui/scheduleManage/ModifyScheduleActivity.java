@@ -15,6 +15,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,16 +35,17 @@ public class ModifyScheduleActivity extends AppCompatActivity {
     ImageView imageView;
     ListView listView;
     Button button_delete;
+    CheckBox checkBox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_schedule);
 
         //寻找组件
-        imageView =findViewById(R.id.imageView_Commit);
-        listView = findViewById(R.id.ListView_AddSchedule);
-        imageView = findViewById(R.id.imageView_Commit);
+        imageView =findViewById(R.id.imageView_modify_Commit);
+        listView = findViewById(R.id.ListView_modify_AddSchedule);
         button_delete = findViewById(R.id.button_delete);
+        checkBox = findViewById(R.id.checkBox_isNotification);
 
         //获取creator
         SharedPreferences sharedPreferences = getSharedPreferences(null,MODE_PRIVATE);
@@ -52,12 +55,14 @@ public class ModifyScheduleActivity extends AppCompatActivity {
                                         ,sharedPreferences1.getString("startTime",null)
                                         ,sharedPreferences1.getString("endTime",null)
                                         ,creator
-                                        ,sharedPreferences1.getString("date",null));
+                                        ,sharedPreferences1.getString("date",null)
+                                        ,true);
         Schedule schedule1 = new Schedule(sharedPreferences1.getString("name",null)
                 ,sharedPreferences1.getString("startTime",null)
                 ,sharedPreferences1.getString("endTime",null)
                 ,creator
-                ,sharedPreferences1.getString("date",null));
+                ,sharedPreferences1.getString("date",null)
+                ,true);
 
         //初始化为已有的日程信息
         setListView(schedule);
@@ -133,6 +138,14 @@ public class ModifyScheduleActivity extends AppCompatActivity {
                                 ,true).show();
                         break;
                 }
+            }
+        });
+
+        //设置提醒
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                schedule1.setNotification(isChecked);
             }
         });
 

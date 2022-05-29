@@ -11,6 +11,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -32,15 +34,17 @@ public class AddScheduleActivity extends AppCompatActivity {
 
     ImageView imageView;
     ListView listView;
+    CheckBox checkBox;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_schedule);
 
         //寻找组件
-        imageView =findViewById(R.id.imageView_Commit);
-        listView = findViewById(R.id.ListView_AddSchedule);
-        imageView = findViewById(R.id.imageView_Commit);
+        imageView =findViewById(R.id.imageView_modify_Commit);
+        listView = findViewById(R.id.ListView_modify_AddSchedule);
+        imageView = findViewById(R.id.imageView_modify_Commit);
+        checkBox = findViewById(R.id.checkBox_isNotification);
 
         //获取creator
         SharedPreferences sharedPreferences = getSharedPreferences(null,MODE_PRIVATE);
@@ -125,6 +129,15 @@ public class AddScheduleActivity extends AppCompatActivity {
             }
         });
 
+        //设置提醒
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                schedule.setNotification(isChecked);
+            }
+        });
+
+
         //提交按钮
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,14 +147,21 @@ public class AddScheduleActivity extends AppCompatActivity {
                     Toast.makeText(AddScheduleActivity.this,"创建失败",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    Toast.makeText(AddScheduleActivity.this,"创建成功",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(AddScheduleActivity.this, MainActivity.class);
-                    startActivity(intent);
+                    if(schedule.getName().equals("")||schedule.getStartTime().equals("")||schedule.getEndTime().equals("")){
+                        Toast.makeText(AddScheduleActivity.this,"不能为空",Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        Toast.makeText(AddScheduleActivity.this, "创建成功", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(AddScheduleActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
                 }
                 //清空数据库用
 //                schedule.emptyDB(null,AddScheduleActivity.this);
             }
         });
+
+
     }
 
     //list设置函数
