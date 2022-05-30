@@ -169,7 +169,7 @@ public class Schedule {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String today = simpleDateFormat.format(curDate);
         List<Schedule> scheduleList = new ArrayList<>();
-        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule.db1",null,1);
+        DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"schedule1.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
         Cursor cursor = db.query("schedule1",new String[]{"name","startTime","endTime","creator","day","notification"},"day = ? and notification = ?",new String[]{today,"1"},null,null,null);
         while(cursor.moveToNext()){

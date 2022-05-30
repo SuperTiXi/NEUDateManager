@@ -35,15 +35,18 @@ public class NotificationActivity extends AppCompatActivity {
             Schedule s = scheduleList.get(i);
             Notification notification = null;
             try {
+                long five = s.getFiveMinBeforeStart();
                 notification = new NotificationCompat.Builder(NotificationActivity.this)
                         .setContentTitle("今日日程提醒")
                         .setContentText("日程"+"'"+s.getName()+"'"+"将于"+s.getStartTime()+"开始,并且在"+s.getEndTime()+"结束")
-                        .setWhen(s.getFiveMinBeforeStart())
+                        .setWhen(System.currentTimeMillis())
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher))
                         .setContentIntent(pendingIntent)  //设置跳转
                         .setAutoCancel(true)  //设置自动取消
+                        .setPriority(2)
                         .build();
+                notification.flags = Notification.FLAG_ONGOING_EVENT;
             } catch (ParseException e) {
                 e.printStackTrace();
             }

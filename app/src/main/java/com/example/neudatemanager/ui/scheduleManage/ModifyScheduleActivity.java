@@ -1,16 +1,26 @@
 package com.example.neudatemanager.ui.scheduleManage;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+
 import com.example.neudatemanager.R;
 import com.example.neudatemanager.entity.Schedule;
+import com.example.neudatemanager.notification.NotificationActivity;
 import com.example.neudatemanager.ui.activity.MainActivity;
 
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -25,10 +35,12 @@ import android.widget.SimpleAdapter;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 public class ModifyScheduleActivity extends AppCompatActivity {
 
@@ -45,7 +57,7 @@ public class ModifyScheduleActivity extends AppCompatActivity {
         imageView =findViewById(R.id.imageView_modify_Commit);
         listView = findViewById(R.id.ListView_modify_AddSchedule);
         button_delete = findViewById(R.id.button_delete);
-        checkBox = findViewById(R.id.checkBox_isNotification);
+        checkBox = findViewById(R.id.checkBox_modify);
 
         //获取creator
         SharedPreferences sharedPreferences = getSharedPreferences(null,MODE_PRIVATE);
@@ -146,11 +158,13 @@ public class ModifyScheduleActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 schedule1.setNotification(isChecked);
+
             }
         });
 
         //提交按钮
         imageView.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 long isSuccess = schedule.modify(null,ModifyScheduleActivity.this,schedule1);
@@ -159,9 +173,52 @@ public class ModifyScheduleActivity extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(ModifyScheduleActivity.this,"修改成功",Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(ModifyScheduleActivity.this, MainActivity.class);
-                    startActivity(intent);
+
+                    Schedule schedule = new Schedule();
+                    List<Schedule> scheduleList = schedule.getTodayScheduleByNotification(null,ModifyScheduleActivity.this);
+                    for(int i = 0;i<scheduleList.size();i++){
+                        Schedule s = scheduleList.get(i);
+
+                        //获取Notification对象并设置跳转
+                        NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+                        Intent intent = new Intent(ModifyScheduleActivity.this, MainActivity.class);
+
+                        String id = "schedule";
+                        String description = "今日日程";
+                        int importance = NotificationManager.IMPORTANCE_HIGH;
+                        NotificationChannel channel = new NotificationChannel(id, description, importance);
+                        manager.createNotificationChannel(channel);
+                        PendingIntent pendingIntent;
+
+                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                            pendingIntent = PendingIntent.getActivity(ModifyScheduleActivity.this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+                        } else {
+                            pendingIntent = PendingIntent.getActivity(ModifyScheduleActivity.this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+                        }
+                        try {
+                            long five = s.getFiveMinBeforeStart();
+                            Notification notification = new NotificationCompat.Builder(ModifyScheduleActivity.this,"schedule")
+                                    .setContentTitle("今日日程提醒")
+                                    .setContentText("日程"+"'"+s.getName()+"'"+"将于"+s.getStartTime()+"开始,并且在"+s.getEndTime()+"结束")
+                                    .setWhen(five)
+                                    .setSmallIcon(R.mipmap.ic_launcher)
+                                    .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher))
+                                    .setContentIntent(pendingIntent)  //设置跳转
+                                    .setAutoCancel(true)  //设置自动取消
+                                    .setPriority(2)
+                                    .build();
+                            manager.notify(i+1,notification);
+                            notification.flags = Notification.FLAG_ONGOING_EVENT;
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                    Intent intent1 = new Intent(ModifyScheduleActivity.this, MainActivity.class);
+                    startActivity(intent1);
                 }
+
+
                 //清空数据库用
 //                schedule.emptyDB(null,AddScheduleActivity.this);
             }
@@ -214,5 +271,6 @@ public class ModifyScheduleActivity extends AppCompatActivity {
         int[] to = {R.id.textView_Head,R.id.textView_Body};
         SimpleAdapter simpleAdapter = new SimpleAdapter(this,list,R.layout.list_add_schedule,from,to);
         listView.setAdapter(simpleAdapter);
+        checkBox.setChecked(schedule.isNotification());
     }
 }
