@@ -75,7 +75,7 @@ public class User {
         contentValues.put("password",this.password);
         DBOpenHelper dbOpenHelper = new DBOpenHelper(context,"user.db",null,1);
         SQLiteDatabase db = dbOpenHelper.getWritableDatabase();
-        int modifyCount = db.update("user",contentValues,"user = ?",new String[]{this.name});
+        int modifyCount = db.update("user",contentValues,"name = ?",new String[]{this.name});
         return modifyCount;
     }
 

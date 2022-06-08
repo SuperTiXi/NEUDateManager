@@ -39,7 +39,7 @@ public class NotificationActivity extends AppCompatActivity {
                 notification = new NotificationCompat.Builder(NotificationActivity.this)
                         .setContentTitle("今日日程提醒")
                         .setContentText("日程"+"'"+s.getName()+"'"+"将于"+s.getStartTime()+"开始,并且在"+s.getEndTime()+"结束")
-                        .setWhen(System.currentTimeMillis())
+                        .setWhen(five)
                         .setSmallIcon(R.mipmap.ic_launcher)
                         .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher))
                         .setContentIntent(pendingIntent)  //设置跳转

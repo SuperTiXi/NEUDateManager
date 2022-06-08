@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ui.mine.MineFragment">
 
+    <ImageView
+        android:id="@+id/imageView_modifyPassword2"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="160dp"
+        android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView_modifyPassword"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/textView_welcome"
         android:layout_width="168dp"
@@ -34,4 +45,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView_modifyPassword"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="373dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="34dp"
+        android:text="东大特色功能"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toStartOf="@+id/imageView_modifyPassword2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_modifyPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>

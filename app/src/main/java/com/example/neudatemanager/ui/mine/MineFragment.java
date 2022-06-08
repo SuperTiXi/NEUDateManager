@@ -2,6 +2,7 @@ package com.example.neudatemanager.ui.mine;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.neudatemanager.databinding.FragmentMineBinding;
 import com.example.neudatemanager.entity.User;
+import com.example.neudatemanager.ui.activity.WebActivity;
 
 
 public class MineFragment extends Fragment {
@@ -28,6 +30,7 @@ public class MineFragment extends Fragment {
     TextView textView_welcome;
     TextView textView_modifyPassword;
     ImageView imageView;
+    TextView textView;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
@@ -37,7 +40,7 @@ public class MineFragment extends Fragment {
         textView_modifyPassword = binding.textViewModifyPassword;
         textView_welcome = binding.textViewWelcome;
         imageView = binding.imageViewModifyPassword;
-
+        textView = binding.textView;
         //获取用户名
         SharedPreferences sharedPreferences = getActivity().getSharedPreferences(null, Context.MODE_PRIVATE);
         String userName = sharedPreferences.getString("creator",null);
@@ -70,6 +73,14 @@ public class MineFragment extends Fragment {
                     }
                 });
                 builder.show();
+            }
+        });
+
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), WebActivity.class);
+                startActivity(intent);
             }
         });
         return root;
