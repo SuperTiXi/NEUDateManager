@@ -57,7 +57,7 @@ public class ModifyScheduleActivity extends AppCompatActivity {
         imageView =findViewById(R.id.imageView_modify_Commit);
         listView = findViewById(R.id.ListView_modify_AddSchedule);
         button_delete = findViewById(R.id.button_delete);
-        checkBox = findViewById(R.id.checkBox_modify);
+        checkBox = findViewById(R.id.checkBox_isNotification);
 
         //获取creator
         SharedPreferences sharedPreferences = getSharedPreferences(null,MODE_PRIVATE);

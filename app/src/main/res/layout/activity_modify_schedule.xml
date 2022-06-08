@@ -17,8 +17,8 @@
 
     <ListView
         android:id="@+id/ListView_modify_AddSchedule"
-        android:layout_width="406dp"
-        android:layout_height="529dp"
+        android:layout_width="412dp"
+        android:layout_height="343dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_NewSchedule" />
@@ -44,10 +44,42 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <CheckBox
-        android:id="@+id/checkBox_modify"
-        android:layout_width="112dp"
-        android:layout_height="64dp"
+        android:id="@+id/checkBox_isNotification"
+        android:layout_width="134dp"
+        android:layout_height="70dp"
+        android:gravity="center"
         android:text="是否提醒"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListView_modify_AddSchedule" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="100dp"
+        android:layout_height="35dp"
+        android:checked="true"
+        android:text="响铃"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_isNotification" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="116dp"
+        android:layout_height="35dp"
+        android:checked="true"
+        android:clickable="true"
+        android:text="立刻提醒"
+        app:layout_constraintStart_toEndOf="@+id/switch1"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_isNotification" />
+
+    <Switch
+        android:id="@+id/switch3"
+        android:layout_width="116dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="70dp"
+        android:checked="false"
+        android:clickable="true"
+        android:text="五分钟前提醒"
+        app:layout_constraintStart_toEndOf="@+id/switch2"
+        app:layout_constraintTop_toBottomOf="@+id/ListView_modify_AddSchedule" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

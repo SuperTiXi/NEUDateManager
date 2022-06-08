@@ -17,8 +17,8 @@
 
     <ListView
         android:id="@+id/ListView_modify_AddSchedule"
-        android:layout_width="408dp"
-        android:layout_height="466dp"
+        android:layout_width="413dp"
+        android:layout_height="357dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_NewSchedule" />
